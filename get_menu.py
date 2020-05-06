@@ -34,16 +34,17 @@ def get_menu(url):
 
         card = item.select('ul li')
 
+        # the 'try' and 'except' are here as not all fields are on all menu cards
         for i in card:
             cat_list.append(cat_name)
             dish_list.append(i.select('h4')[0].text.strip())
             splash = main_url + i.select('a')[0].attrs['href'].strip()
             try:
-                desc_list.append(i.select('.c6')[0].text.strip())
+                desc_list.append(i.select('.c6')[0].text.strip())  # These are the classes (so far) that are variable from page to page
             except:
                 desc_list.append(np.NaN)
             try:
-                price_list.append(i.select('.b8')[1].text.strip())
+                price_list.append(i.select('.b8')[1].text.strip())  # These are the classes (so far) that are variable from page to page
             except:
                 price_list.append(np.NaN)
             try:
